@@ -14,17 +14,14 @@
 </th:block>
 </p>
 <form th:action="@{/update-category}" th:object="${category}" method="post">
+    <input type="hidden" th:field="*{id}">
     <table border="1">
         <tr>
             <td>Name</td>
             <td><input type="text" th:field="*{name}"></td>
-            <td><input type="hidden" th:field="*{id}"></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td><input type="submit" value="Update"></td>
         </tr>
     </table>
+    <input type="submit" value="Update">
 </form>
 </body>
 </html>

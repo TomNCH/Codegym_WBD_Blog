@@ -9,18 +9,15 @@
 <p><a href="/category">Back to list category</a></p>
 <div>
     <form th:action="@{/remove-category}" th:object="${category}" method="post">
+        <input type="hidden" th:field="*{id}">
         <table border="1">
             <tr>
                 <td>Name:</td>
                 <td th:text="${category.name}"></td>
-                <td><input type="hidden" th:field="*{id}"></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><input type="submit" value="Delete"></td>
             </tr>
         </table>
     </form>
+    <input type="submit" value="Delete">
 </div>
 </body>
 </html>

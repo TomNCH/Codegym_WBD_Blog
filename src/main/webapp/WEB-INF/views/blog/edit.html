@@ -27,7 +27,8 @@
         </tr>
         <tr>
             <td>Content: </td>
-            <td><input  type="text" th:field="*{content}"></td>
+<!--            <td><input  type="text" th:field="*{content}"></td>-->
+            <td><textarea type="text" th:field="*{content}" rows="10" cols="50"></textarea></td>
         </tr>
         <tr>
             <td>Date: </td>
@@ -44,11 +45,8 @@
                 </select>
             </td>
         </tr>
-        <tr>
-            <td></td>
-            <td><input type="submit" value="Update"></td>
-        </tr>
     </table>
+    <input type="submit" value="Update">
 </form>
 </body>
 </html>
