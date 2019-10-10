@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head>
     <meta charset="UTF-8">
     <title>Edit BLog</title>
 </head>
 <body>
 <h1 class="title">Edit Blog</h1>
-<p><a href="/list">Back to list blog</a></p>
+<p><a href="/list-blog">Back to list blog</a></p>
 <th:block th:if="${message}">
     <p th:text="${message}">
 </th:block>
@@ -47,6 +49,9 @@
         </tr>
     </table>
     <input type="submit" value="Update">
+    <div sec:authorize="isAuthenticated()">
+        <a th:href="@{/logout}">Logout</a>
+    </div>
 </form>
 </body>
 </html>

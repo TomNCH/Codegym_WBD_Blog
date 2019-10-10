@@ -6,7 +6,7 @@
 </head>
 <body>
 <center><h1 th:text="${blog.title}"></h1> </center>
-<p><a href="/list">Back to list blog</a> </p>
+<p><a href="/list-blog">Back to list blog</a> </p>
 <p><h4><a th:text="${blog.category.name}"
           th:href="@{/view-category/__${blog.category.id}__}"></a></h4></p>
 <p><h5 th:text="${blog.date}"></h5></p>

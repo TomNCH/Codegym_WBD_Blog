@@ -21,12 +21,22 @@ public class BlogController {
     @Autowired
     private CategoryService categoryService;
 
+
+    @GetMapping("/")
+    public ModelAndView home(Pageable pageable){
+        Iterable<Blog> blogs = blogService.findAll(pageable);
+        ModelAndView modelAndView = new ModelAndView("/blog/list");
+        modelAndView.addObject("blogs", blogs);
+        return modelAndView;
+    }
+
+
     @ModelAttribute("categories")
     public Iterable<Category> categories(){
         return categoryService.findAll();
     }
 
-    @RequestMapping("/list")
+    @RequestMapping("/list-blog")
     public ModelAndView getAllBlog(@RequestParam("s") Optional<String> s, Pageable pageable) {
 
         Page<Blog> blogList;
@@ -41,7 +51,7 @@ public class BlogController {
         return modelAndView;
     }
 
-    @GetMapping("/create")
+    @GetMapping("/create-blog")
     public ModelAndView createForm(){
         ModelAndView modelAndView = new ModelAndView("/blog/create");
         modelAndView.addObject("blog", new Blog());
@@ -59,7 +69,7 @@ public class BlogController {
         return modelAndView;
     }
 
-    @GetMapping("/read/{id}")
+    @GetMapping("/read-blog/{id}")
     public ModelAndView readContent(@PathVariable Long id) {
         Blog blog = blogService.findById(id);
         ModelAndView modelAndView = new ModelAndView("/blog/read");
@@ -68,7 +78,7 @@ public class BlogController {
         return modelAndView;
     }
 
-    @GetMapping("/edit/{id}")
+    @GetMapping("/edit-blog/{id}")
     public ModelAndView showEditForm(@PathVariable Long id) {
         Blog blog = blogService.findById(id);
         ModelAndView modelAndView = new ModelAndView("/blog/edit");
@@ -88,7 +98,7 @@ public class BlogController {
         return modelAndView;
     }
 
-    @GetMapping("/remove/{id}")
+    @GetMapping("/remove-blog/{id}")
     public ModelAndView showRemoveForm(@PathVariable Long id){
         Blog blog = blogService.findById(id);
         ModelAndView modelAndView = new ModelAndView("/blog/delete");

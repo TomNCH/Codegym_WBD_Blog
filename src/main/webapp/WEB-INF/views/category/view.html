@@ -14,17 +14,20 @@
         <td>Summary </td>
         <td>Date </td>
         <td>Category</td>
+        <td>Edit</td>
+        <td>Delete</td>
+        <td>Read</td>
     </tr>
     <th:block th:each="blog : ${blogs}">
         <tr>
-            <td><a th:href="@{/read/__${blog.id}__}"  th:text="${blog.title}"></a></td>
+            <td><a th:href="@{/read-blog/__${blog.id}__}"  th:text="${blog.title}"></a></td>
             <td th:text="${blog.people}"></td>
             <td th:text="${blog.summary}"></td>
             <td th:text="${blog.date}"></td>
             <td><a th:text="${blog.category.name}" th:href="@{/view-category/__${blog.category.id}__}"></a></td>
-            <td><a th:href="@{/edit/__${blog.id}__}">Edit</a> </td>
-            <td><a th:href="@{/remove/__${blog.id}__}">Delete</a> </td>
-            <td><a th:href="@{/read/__${blog.id}__}">Read More...</a> </td>
+            <td><a th:href="@{/edit-category/__${blog.id}__}">Edit</a> </td>
+            <td><a th:href="@{/remove-category/__${blog.id}__}">Delete</a> </td>
+            <td><a th:href="@{/read-category/__${blog.id}__}">Read More...</a> </td>
         </tr>
     </th:block>
 </table>

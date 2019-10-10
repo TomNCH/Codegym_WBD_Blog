@@ -1,11 +1,13 @@
 package com.managers.security;
 
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+@Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -21,9 +23,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/").permitAll()
                 .and()
-                .authorizeRequests().antMatchers("/user**").hasRole("USER")
+                .authorizeRequests().antMatchers("/edit-blog","/create-blog","/list-category","/view-category")
+                .hasRole("USER")
                 .and()
-                .authorizeRequests().antMatchers("/admin**").hasRole("ADMIN")
+                .authorizeRequests().antMatchers("/edit**/**","/create**/**","/remove**/**").hasRole("ADMIN")
                 .and()
                 .formLogin()
                 .and()

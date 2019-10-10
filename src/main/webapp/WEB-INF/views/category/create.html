@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head>
     <meta charset="UTF-8">
     <title>Create New Category</title>
@@ -21,6 +23,9 @@
         </tr>
     </table>
     <input type="submit" value="Create">
+    <div sec:authorize="isAuthenticated()">
+        <a th:href="@{/logout}">Logout</a>
+    </div>
 </form>
 </body>
 </html>

@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head>
     <meta charset="UTF-8">
     <title>Remove Blog</title>
 </head>
 <body>
 <h1 class="title">Are you sure?</h1>
-<p><a href="/list">Back to list blog</a> </p>
+<p><a href="/list-blog">Back to list blog</a> </p>
 <form th:action="@{/delete-blog}" th:object="${blog}" method="post">
     <input type="hidden" th:field="*{id}">
     <table border="1">
@@ -32,6 +34,9 @@
         </tr>
     </table>
     <input type="submit" value="Delete">
+    <div sec:authorize="isAuthenticated()">
+        <a th:href="@{/logout}">Logout</a>
+    </div>
 </form>
 </body>
 </html>

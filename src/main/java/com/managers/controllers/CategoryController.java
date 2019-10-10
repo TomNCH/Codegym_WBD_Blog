@@ -17,10 +17,10 @@ public class CategoryController {
     @Autowired
     private BlogService blogService;
 
-    @RequestMapping("/")
-    public ModelAndView home(){
-        return listCategory();
-    }
+//    @RequestMapping("/")
+//    public ModelAndView home(){
+//        return listCategory();
+//    }
 
     @GetMapping("/category")
     public ModelAndView listCategory(){
